@@ -2,6 +2,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
+import numpy as np
 
 
 # All sklearn Transforms must have the `transform` and `fit` methods
