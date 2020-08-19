@@ -2,7 +2,6 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
-import numpy as np
 
 
 # All sklearn Transforms must have the `transform` and `fit` methods
@@ -27,9 +26,9 @@ class FormatNaNColumns(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         return self
     
-    def transform(self, X):
+    def transform(self, X, nan):
         inputer = SimpleImputer(
-            missing_values=np.nan,  # los valores que faltan son del tipo ``np.nan`` (Pandas estándar)
+            missing_values=nan,  # los valores que faltan son del tipo ``np.nan`` (Pandas estándar)
             strategy='mean',  # la estrategia elegida es cambiar el valor faltante por una constante
             #fill_value=0,  # la constante que se usará para completar los valores faltantes es un int64 = 0
             verbose=0,
