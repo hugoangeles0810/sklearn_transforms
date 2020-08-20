@@ -36,7 +36,7 @@ class FormatNaNColumns(BaseEstimator, TransformerMixin):
             copy=True
         )
         data = X.copy()
-        dataFormatted =  pd.DataFrame(inputer.fit_transform(data[self.columns].values), columns=self.columns, index = data.index)
+        dataFormatted = inputer.fit_transform(data[self.columns])
         data[self.columns] = dataFormatted
         return data
 
@@ -50,6 +50,6 @@ class NormalizeColumns(BaseEstimator, TransformerMixin):
     def transform(self, X):
         scaler = MinMaxScaler()
         data = X.copy()
-        df_scaled =  pd.DataFrame(scaler.fit_transform(data[self.columns].values), columns=self.columns, index = data.index)
+        df_scaled =  scaler.fit_transform(data[self.columns])
         data[self.columns] = df_scaled
         return data
